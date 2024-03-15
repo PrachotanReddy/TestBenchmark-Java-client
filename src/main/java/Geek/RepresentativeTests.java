@@ -20,9 +20,10 @@ public class RepresentativeTests {
     private AndroidDriver<WebElement> driver;
     private final String ACTIVITY = "com.contextlogic.wish.activity.login.LoginActivity";
     private final String PACKAGE = "com.contextlogic.geek";
-    private final String DEVICE = "Pixel 3 API 23";
-    private final String PLATFORM = "android";
-    private final String SERVER = "http://0.0.0.0:4723/wd/hub";
+    private final String DEVICE = "emulator-5554";
+    private final String PLATFORM = "Android";
+    private final String SERVER = "http://localhost:4723";
+    private final String autoName ="UIAutomator2";
 
     @BeforeSuite
     public void setUp() throws IOException {
@@ -31,6 +32,7 @@ public class RepresentativeTests {
         capabilities.setCapability("platformName", PLATFORM);
         capabilities.setCapability("appPackage", PACKAGE);
         capabilities.setCapability("appActivity", ACTIVITY);
+        capabilities.setCapability("automationName",autoName);
         driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
     }
 
@@ -52,9 +54,9 @@ public class RepresentativeTests {
 
         //test
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
     }
@@ -67,15 +69,15 @@ public class RepresentativeTests {
 
         //test
         AndroidElement firstname = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/create_account_fragment_first_name_text");
-        firstname.sendKeys(Configuration.firstname);
+        firstname.sendKeys("Test");
         AndroidElement lastname = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/create_account_fragment_last_name_text");
-        lastname.sendKeys(Configuration.lastname);
+        lastname.sendKeys("Name");
         AndroidElement email = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/create_account_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement confirm_email = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/create_account_fragment_confirm_email_text");
-        confirm_email.sendKeys(Configuration.email);
+        confirm_email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/create_account_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_up = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/create_account_fragment_create_account_button");
         sign_up.click();
     }
@@ -87,9 +89,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -107,9 +109,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -125,9 +127,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -148,9 +150,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -169,9 +171,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -189,9 +191,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -207,9 +209,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -227,9 +229,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -250,9 +252,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -275,9 +277,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);
@@ -307,9 +309,9 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/login_fragment_sign_in_button");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_email_text");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_password_text");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.contextlogic.geek:id/sign_in_fragment_sign_in_button");
         sign_in.click();
         Thread.sleep(5000);

@@ -15,12 +15,13 @@ import java.net.URL;
 public class RepresentativeTests {
 
   private AndroidDriver<WebElement> driver;
+  private final String DEVICE = "emulator-5554";
+  private final String PLATFORM = "Android";
+  private final String SERVER = "http://localhost:4723";
+  private final String autoName ="UIAutomator2";
+
   private final String ACTIVITY = "com.cnn.mobile.android.phone.features.splash.SplashActivity";
   private final String PACKAGE = "com.cnn.mobile.android.phone";
-  private final String DEVICE = "LMG820QM2a5f3a88";
-  private final String PLATFORM = "android";
-  private final String SERVER = "http://localhost:4723";
-
   @BeforeSuite
   public void setUp() throws IOException {
       DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -28,6 +29,7 @@ public class RepresentativeTests {
       capabilities.setCapability("platformName", PLATFORM);
       capabilities.setCapability("appPackage", PACKAGE);
       capabilities.setCapability("appActivity", ACTIVITY);
+      capabilities.setCapability("automationName",autoName);
       driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
   }
 

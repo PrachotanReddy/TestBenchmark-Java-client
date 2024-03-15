@@ -17,18 +17,20 @@ public class RepresentativeTests {
   private AndroidDriver<WebElement> driver;
   private final String ACTIVITY = "com.abc.abcnews.ui.StartActivity";
   private final String PACKAGE = "com.abc.abcnews";
-  private final String DEVICE = "LMG820QM2a5f3a88";
-  private final String PLATFORM = "android";
+  private final String DEVICE = "emulator-5554";
+  private final String PLATFORM = "Android";
   private final String SERVER = "http://localhost:4723";
+  private final String autoName ="UIAutomator2";
 
   @BeforeSuite
   public void setUp() throws IOException {
-      DesiredCapabilities capabilities = new DesiredCapabilities();
-      capabilities.setCapability("deviceName", DEVICE);
-      capabilities.setCapability("platformName", PLATFORM);
-      capabilities.setCapability("appPackage", PACKAGE);
-      capabilities.setCapability("appActivity", ACTIVITY);
-      driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    capabilities.setCapability("deviceName", DEVICE);
+    capabilities.setCapability("platformName", PLATFORM);
+    capabilities.setCapability("appPackage", PACKAGE);
+    capabilities.setCapability("appActivity", ACTIVITY);
+    capabilities.setCapability("automationName",autoName);
+    driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
   }
 
   @AfterClass
@@ -60,26 +62,30 @@ public class RepresentativeTests {
   // }
 
   @Test
-  public void testSearch() {
+  public void testSearch() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //class android.widget.EditText
     //activity .ui.navigation.MainNavigationActivity
     AndroidElement search_bar = (AndroidElement) driver.findElementById("com.abc.abcnews:id/drawer_search");
+    Thread.sleep(15000);
     search_bar.sendKeys("sanders feels the heat\n");
     //activity .ui.SearchActivity
   }
 
   @Test
-  public void testDetail() {
+  public void testDetail() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //class android.widget.EditText
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement search_bar = (AndroidElement) driver.findElementById("com.abc.abcnews:id/drawer_search");
     search_bar.sendKeys("sanders feels the heat\n");
     //class android.widget.LinearLayout
@@ -90,9 +96,10 @@ public class RepresentativeTests {
   }
 
   @Test
-  public void testAddBookmark() {
+  public void testAddBookmark() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //class android.widget.EditText
@@ -101,25 +108,30 @@ public class RepresentativeTests {
     search_bar.sendKeys("sanders feels the heat\n");
     //class android.widget.LinearLayout
     //activity .ui.SearchActivity
+    Thread.sleep(15000);
     AndroidElement item_1 = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout[1]");
     item_1.click();
     //class android.widget.TextView
     //activity .ui.NewsItemActivity
+    Thread.sleep(15000);
     AndroidElement save_bookmark = (AndroidElement) driver.findElementById("com.abc.abcnews:id/menu_save_button");
     save_bookmark.click();
     //activity .ui.NewsItemActivity
   }
 
   @Test
-  public void testRemoveBookmark() {
+  public void testRemoveBookmark() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //class android.widget.EditText
     //activity .ui.navigation.MainNavigationActivity
+
     AndroidElement search_bar = (AndroidElement) driver.findElementById("com.abc.abcnews:id/drawer_search");
     search_bar.sendKeys("sanders feels the heat\n");
+    Thread.sleep(15000);
     //class android.widget.LinearLayout
     //activity .ui.SearchActivity
     AndroidElement item_1 = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout[1]");
@@ -157,23 +169,27 @@ public class RepresentativeTests {
   // }
 
   @Test
-  public void testTextSize() {
+  public void testTextSize() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //class android.widget.RelativeLayout
     //activity .ui.navigation.MainNavigationActivity
     AndroidElement menu_settings = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout[2]/android.widget.ListView/android.widget.RelativeLayout");
     menu_settings.click();
+    Thread.sleep(15000);
     //class android.widget.LinearLayout
     //activity .ui.SettingsActivity
     AndroidElement menu_textsize = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout[1]");
     menu_textsize.click();
+    Thread.sleep(15000);
     //class android.widget.CheckedTextView
     //activity .ui.SettingsActivity
     AndroidElement change_textsize = (AndroidElement) driver.findElementById("android:id/text1");
     change_textsize.click();
+    Thread.sleep(15000);
     //activity .ui.SettingsActivity
   }
 
@@ -183,28 +199,32 @@ public class RepresentativeTests {
   // }
 
   @Test
-  public void testCategory() {
+  public void testCategory() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //class android.view.ViewGroup
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement cat_1 = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout[2]/android.widget.ListView/android.view.ViewGroup[1]");
     cat_1.click();
     //activity .ui.navigation.MainNavigationActivity
   }
 
   @Test
-  public void testContact() {
+  public void testContact() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
+    Thread.sleep(15000);
     //class android.widget.RelativeLayout
     //activity .ui.navigation.MainNavigationActivity
     AndroidElement menu_settings = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout[2]/android.widget.ListView/android.widget.RelativeLayout");
     menu_settings.click();
+    Thread.sleep(15000);
     //class android.widget.TextView
     //activity .ui.SettingsActivity
     AndroidElement contact = (AndroidElement) driver.findElementById("com.abc.abcnews:id/setting_feedback");
@@ -218,24 +238,28 @@ public class RepresentativeTests {
   // }
 
   @Test
-  public void testMenu() {
+  public void testMenu() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
     //activity .ui.navigation.MainNavigationActivity
   }
 
   @Test
-  public void testTerms() {
+  public void testTerms() throws InterruptedException {
     //class android.widget.ImageButton
     //activity .ui.navigation.MainNavigationActivity
+    Thread.sleep(15000);
     AndroidElement menu = (AndroidElement) driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Drawer Opened\"]");
     menu.click();
+    Thread.sleep(15000);
     //class android.widget.RelativeLayout
     //activity .ui.navigation.MainNavigationActivity
     AndroidElement menu_settings = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout[2]/android.widget.ListView/android.widget.RelativeLayout");
     menu_settings.click();
+    Thread.sleep(15000);
     //class android.widget.TextView
     //activity .ui.SettingsActivity
     AndroidElement legal = (AndroidElement) driver.findElementById("com.abc.abcnews:id/setting_terms");

@@ -20,9 +20,10 @@ public class RepresentativeTests {
     private AndroidDriver<WebElement> driver;
     private final String ACTIVITY = ".onboarding.main.activities.Onboarding";
     private final String PACKAGE = "com.groupon";
-    private final String DEVICE = "Pixel 3 API 23";
-    private final String PLATFORM = "android";
-    private final String SERVER = "http://0.0.0.0:4723/wd/hub";
+    private final String DEVICE = "emulator-5554";
+    private final String PLATFORM = "Android";
+    private final String SERVER = "http://localhost:4723";
+    private final String autoName ="UIAutomator2";
 
     @BeforeSuite
     public void setUp() throws IOException {
@@ -31,6 +32,7 @@ public class RepresentativeTests {
         capabilities.setCapability("platformName", PLATFORM);
         capabilities.setCapability("appPackage", PACKAGE);
         capabilities.setCapability("appActivity", ACTIVITY);
+        capabilities.setCapability("automationName",autoName);
         driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
     }
 
@@ -63,9 +65,9 @@ public class RepresentativeTests {
 
         //test
         AndroidElement email =  (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_email");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_password");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_groupon_button");
         sign_in.click();
     }
@@ -84,11 +86,11 @@ public class RepresentativeTests {
 
         //test
         AndroidElement username = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_name");
-        username.sendKeys(Configuration.username);
+        username.sendKeys("Test");
         AndroidElement email =  (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_email");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_password");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_up = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_groupon_button");
         sign_up.click();
     }
@@ -116,9 +118,9 @@ public class RepresentativeTests {
 //        AndroidElement menu_signin = (AndroidElement) driver.findElementById("com.groupon:id/sign_in_button");
 //        menu_signin.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_email");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_password");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_groupon_button");
         sign_in.click();
 
@@ -206,9 +208,9 @@ public class RepresentativeTests {
         AndroidElement jump = (AndroidElement) driver.findElementById("com.groupon:id/done");
         jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_email");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_password");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_groupon_button");
         sign_in.click();
 
@@ -230,9 +232,9 @@ public class RepresentativeTests {
         AndroidElement jump = (AndroidElement) driver.findElementById("com.groupon:id/done");
         jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_email");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement password = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_password");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementById("com.groupon:id/fragment_log_in_sign_up_groupon_button");
         sign_in.click();
 

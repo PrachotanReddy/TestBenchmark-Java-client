@@ -14,6 +14,7 @@ import java.net.URL;
 
 /**
  * Android Browser Local Test.
+ * Not Launching
  */
 public class RepresentativeTests {
 
@@ -21,9 +22,10 @@ public class RepresentativeTests {
     private final String ACTIVITY = ".main.ShoppingMainActivity";
     //private final String ACTIVITY = ".activity.MainActivity";
     private final String PACKAGE = "com.google.android.apps.shopping.express";
-    private final String DEVICE = "Pixel 3 API 23";
-    private final String PLATFORM = "android";
-    private final String SERVER = "http://0.0.0.0:4723/wd/hub";
+    private final String DEVICE = "emulator-5554";
+    private final String PLATFORM = "Android";
+    private final String SERVER = "http://localhost:4723";
+    private final String autoName ="UIAutomator2";
 
     @BeforeSuite
     public void setUp() throws IOException {
@@ -32,6 +34,7 @@ public class RepresentativeTests {
         capabilities.setCapability("platformName", PLATFORM);
         capabilities.setCapability("appPackage", PACKAGE);
         capabilities.setCapability("appActivity", ACTIVITY);
+        capabilities.setCapability("automationName",autoName);
         driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
     }
 
@@ -54,11 +57,11 @@ public class RepresentativeTests {
 
         //test
         AndroidElement email =  (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Email or phone\"]");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement signin_continue = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         signin_continue.click();
         AndroidElement password = (AndroidElement) driver.findElementByXPath("//android.webkit.WebView[@content-desc=\"Welcome\"]/android.view.View/android.view.View[3]");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         sign_in.click();
     }
@@ -75,9 +78,9 @@ public class RepresentativeTests {
 
         //test
         AndroidElement first_name = (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"First name\"]");
-        first_name.sendKeys(Configuration.first_name);
+        first_name.sendKeys("Test");
         AndroidElement last_name = (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Last name\"]");
-        last_name.sendKeys(Configuration.last_name);
+        last_name.sendKeys("Name");
         AndroidElement sign_up = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         sign_up.click();
 
@@ -108,11 +111,11 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/account_drop_down_arrow");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Email or phone\"]");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement signin_continue = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         signin_continue.click();
         AndroidElement password = (AndroidElement) driver.findElementByXPath("//android.webkit.WebView[@content-desc=\"Welcome\"]/android.view.View/android.view.View[3]");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         sign_in.click();
 
@@ -128,11 +131,11 @@ public class RepresentativeTests {
         AndroidElement signin_jump = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/account_drop_down_arrow");
         signin_jump.click();
         AndroidElement email =  (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Email or phone\"]");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         AndroidElement signin_continue = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         signin_continue.click();
         AndroidElement password = (AndroidElement) driver.findElementByXPath("//android.webkit.WebView[@content-desc=\"Welcome\"]/android.view.View/android.view.View[3]");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         AndroidElement sign_in = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Next\"]");
         sign_in.click();
 
@@ -149,19 +152,19 @@ public class RepresentativeTests {
         address_add.click();
 
         AndroidElement recipient = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/address_recipient");
-        recipient.sendKeys(Configuration.first_name);
+        recipient.sendKeys("Test");
         AndroidElement address_street =  (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/address_street");
-        address_street.sendKeys(Configuration.street);
+        address_street.sendKeys("30th St");
         AndroidElement city = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/address_city");
-        city.sendKeys(Configuration.city);
+        city.sendKeys("LA");
         AndroidElement state_selection = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/address_state_spinner");
         state_selection.click();
         AndroidElement state = (AndroidElement) driver.findElementById("android:id/text1");
         state.click();
         AndroidElement zip = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/address_zip_code");
-        zip.sendKeys(Configuration.zip);
+        zip.sendKeys("90007");
         AndroidElement phone = (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/phone_number");
-        phone.sendKeys(Configuration.phone);
+        phone.sendKeys("1234567890");
         AndroidElement address_save =  (AndroidElement) driver.findElementById("com.google.android.apps.shopping.express:id/save_address_button");
         address_save.click();
     }

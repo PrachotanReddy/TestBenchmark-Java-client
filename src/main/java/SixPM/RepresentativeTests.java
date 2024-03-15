@@ -14,15 +14,17 @@ import java.net.URL;
 
 /**
  * Android Browser Local Test.
+ * APp booting but no content
  */
 public class RepresentativeTests {
 
     private AndroidDriver<WebElement> driver;
     private final String ACTIVITY = "com.zappos.android.activities.HomeActivity";
     private final String PACKAGE = "com.zappos.android.sixpmFlavor";
-    private final String DEVICE = "Pixel 3 API 23";
-    private final String PLATFORM = "android";
-    private final String SERVER = "http://0.0.0.0:4723/wd/hub";
+    private final String DEVICE = "emulator-5554";
+    private final String PLATFORM = "Android";
+    private final String SERVER = "http://localhost:4723";
+    private final String autoName ="UIAutomator2";
 
     @BeforeSuite
     public void setUp() throws IOException {
@@ -31,6 +33,7 @@ public class RepresentativeTests {
         capabilities.setCapability("platformName", PLATFORM);
         capabilities.setCapability("appPackage", PACKAGE);
         capabilities.setCapability("appActivity", ACTIVITY);
+        capabilities.setCapability("automationName",autoName);
         driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
     }
 
@@ -58,13 +61,13 @@ public class RepresentativeTests {
 
         //test
         AndroidElement username = (AndroidElement) driver.findElementById("ap_customer_name");
-        username.sendKeys(Configuration.name);
+        username.sendKeys("Test");
         Thread.sleep(7000);
         AndroidElement email = (AndroidElement) driver.findElementById("ap_email");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         Thread.sleep(7000);
         AndroidElement password = (AndroidElement) driver.findElementById("ap_password");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         Thread.sleep(7000);
         AndroidElement sign_up = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@text=\"Create your 6pm account\"]");
         sign_up.click();
@@ -100,10 +103,10 @@ public class RepresentativeTests {
         menu_signin.click();
         Thread.sleep(5000);
         AndroidElement email =  (AndroidElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Email\"]");
-        email.sendKeys(Configuration.email);
+        email.sendKeys("test@gmail.com");
         Thread.sleep(7000);
         AndroidElement password = (AndroidElement) driver.findElementByXPath("//android.webkit.WebView[@content-desc=\"6pm Sign-In\"]/android.view.View[2]/android.view.View[5]/android.widget.EditText");
-        password.sendKeys(Configuration.password);
+        password.sendKeys("testPass");
         Thread.sleep(7000);
         AndroidElement sign_in = (AndroidElement) driver.findElementByXPath("//android.widget.Button[@content-desc=\"Sign-In\"]");
         sign_in.click();
@@ -115,13 +118,13 @@ public class RepresentativeTests {
         add.click();
 
         AndroidElement phone = (AndroidElement) driver.findElementById("com.zappos.android.sixpmFlavor:id/add_update_shipping_address_address_phone");
-        phone.sendKeys(Configuration.phone);
+        phone.sendKeys("1234567890");
         AndroidElement street =  (AndroidElement) driver.findElementById("com.zappos.android.sixpmFlavor:id/add_update_shipping_address_address_line_1");
-        street.sendKeys(Configuration.street);
+        street.sendKeys("XYZ St");
         AndroidElement zip = (AndroidElement) driver.findElementById("com.zappos.android.sixpmFlavor:id/add_update_shipping_address_address_zip");
-        zip.sendKeys(Configuration.zip);
+        zip.sendKeys("90007");
         AndroidElement city = (AndroidElement) driver.findElementById("com.zappos.android.sixpmFlavor:id/add_update_shipping_address_address_city");
-        city.sendKeys(Configuration.city);
+        city.sendKeys("LA");
         AndroidElement state_spinner = (AndroidElement) driver.findElementById("com.zappos.android.sixpmFlavor:id/add_update_shipping_address_address_state_spinner");
         state_spinner.click();
         AndroidElement state = (AndroidElement) driver.findElementById("android:id/text1");
