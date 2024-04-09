@@ -2,6 +2,8 @@ package cnn;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import org.aspectj.weaver.ast.And;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
@@ -30,6 +32,7 @@ public class RepresentativeTests {
       capabilities.setCapability("appPackage", PACKAGE);
       capabilities.setCapability("appActivity", ACTIVITY);
       capabilities.setCapability("automationName",autoName);
+    capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
       driver = new AndroidDriver<WebElement>(new URL(SERVER), capabilities);
   }
 
@@ -39,8 +42,20 @@ public class RepresentativeTests {
   }
 
   @BeforeMethod
-  public void reset() {
+  public void reset() throws InterruptedException {
       driver.resetApp();
+      Thread.sleep(5000);
+    AndroidElement edition=(AndroidElement)driver.findElementByXPath("//android.widget.ScrollView/android.view.View[1]/android.view.View[1]/android.widget.RadioButton");
+    edition.click();
+    AndroidElement next=(AndroidElement)driver.findElementByXPath("//android.widget.Button");
+    next.click();
+    Thread.sleep(500);
+    AndroidElement skip=(AndroidElement)driver.findElementByXPath("//android.widget.TextView[@text=\"Skip (No Alerts)\"]");
+    skip.click();
+    Thread.sleep(500);
+    AndroidElement agree=(AndroidElement)driver.findElementByXPath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
+    agree.click();
+    Thread.sleep(500);
   }
 
   // @Test
@@ -54,30 +69,32 @@ public class RepresentativeTests {
   // }
 
   @Test
-  public void testSearch() {
+  public void testSearch() throws InterruptedException {
     //class android.widget.FrameLayout
     //activity .features.main.MainActivity
-    AndroidElement tosearch = (AndroidElement) driver.findElementById("com.cnn.mobile.android.phone:id/search_item_menu");
+
+    AndroidElement tosearch = (AndroidElement) driver.findElementById("com.cnn.mobile.android.phone:id/toolbar_search");
     tosearch.click();
     //class android.widget.EditText
     //activity .features.main.MainActivity
-    AndroidElement search_bar = (AndroidElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\" search text input\"]/android.widget.EditText");
+    AndroidElement search_bar = (AndroidElement) driver.findElementByXPath("//android.widget.EditText");
     search_bar.sendKeys("llama\n");
     //activity .features.main.MainActivity
   }
 
   @Test
-  public void testDetail() {
+  public void testDetail() throws InterruptedException {
     //class android.widget.FrameLayout
     //activity .features.main.MainActivity
-    AndroidElement tosearch = (AndroidElement) driver.findElementById("com.cnn.mobile.android.phone:id/search_item_menu");
+    AndroidElement tosearch = (AndroidElement) driver.findElementById("com.cnn.mobile.android.phone:id/toolbar_search");
     tosearch.click();
     //class android.widget.EditText
     //activity .features.main.MainActivity
-    AndroidElement search_bar = (AndroidElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\" search text input\"]/android.widget.EditText");
+    AndroidElement search_bar = (AndroidElement) driver.findElementByXPath("//android.widget.EditText");
     search_bar.sendKeys("llama\n");
     //class android.view.ViewGroup
     //activity .features.main.MainActivity
+    Thread.sleep(1000);
     AndroidElement item_1 = (AndroidElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]");
     item_1.click();
     //activity .features.main.MainActivity
